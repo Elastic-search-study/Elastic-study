@@ -1,0 +1,120 @@
+Colours were drawn at the opening ceremony. Gukesh received the white pieces for the first game.[52] Colours alternate thereafter, with no switching at the halfway point.[36]
+
+Date	Event
+Saturday, 23 November	Media day, opening ceremony, and technical meeting
+Sunday, 24 November	Rest day
+Monday, 25 November	Game 1
+Tuesday, 26 November	Game 2
+Wednesday, 27 November	Game 3
+Thursday, 28 November	Rest day
+Friday, 29 November	Game 4
+Saturday, 30 November	Game 5
+Sunday, 1 December	Game 6
+Monday, 2 December	Rest day
+Tuesday, 3 December	Game 7
+Wednesday, 4 December	Game 8
+Thursday, 5 December	Game 9
+Friday, 6 December	Rest day
+Saturday, 7 December	Game 10
+Sunday, 8 December	Game 11
+Monday, 9 December	Game 12
+Tuesday, 10 December	Rest day
+Wednesday, 11 December	Game 13
+Thursday, 12 December	Game 14
+Friday, 13 December	Tiebreaks (if necessary)
+Saturday, 14 December	Closing ceremony
+
+If the match ends in less than fourteen games, then the closing ceremony may be moved forward.[36][53]
+
+Results
+This section uses algebraic notation to describe chess moves.
+World Chess Championship 2024
+Rating	Match games	Points
+1	2	3	4	5	6	7	8	9	10	11	12	13	14
+ Gukesh Dommaraju (IND)	2783	0	½	1	½											2
+ Ding Liren (CHN)	2728	1	½	0	½											2
+Classical games
+Game 1: Gukesh–Ding, 0–1
+Gukesh–Ding, game 1
+a	b	c	d	e	f	g	h	
+8	
+c8 black rooke8 black kingh8 black rookb7 black pawnd7 black bishope7 black bishopf7 black pawng7 black pawnh7 black pawne6 black pawnd5 black pawne5 white pawnf5 white pawnb4 white pawnd4 white knightg4 white pawna3 black pawnc3 white pawnd3 black queene3 white queena2 white pawnb2 black knightf2 white bishopg2 white bishoph2 white pawnc1 white rookf1 white rookg1 white king
+8
+7	7
+6	6
+5	5
+4	4
+3	3
+2	2
+1	1
+a	b	c	d	e	f	g	h	
+Position after 21...Qd3. Gukesh had planned 22.Qf4, before noticing that this move allows 22...g5! 23.Qg3 Qxg3 24.Bxg3 0-0 intending ...Bd8–b6, giving Black the better endgame. Nonetheless, this was still preferable to Gukesh's 22.Qe1? Although this move defends the c3-pawn, White's passive pieces leads to an overwhelming advantage for Black.[54]
+The first game of the match, a 42-move win for Ding, was played on 25 November. Ding surprised observers by playing the French Defense, which has traditionally been considered a "solid" opening but some lines are in fact quite combative. Ding had previously played it in game 7 of the World Chess Championship 2023 against Ian Nepomniachtchi.[55] He then spent 28 minutes thinking on move seven while in a still relatively well-known position. Meanwhile, Gukesh was still in his preparation, blitzing out the attacking novelty 10.g4!? Ding's 10...Qa5, however, took Gukesh out of his preparation as Xie Jun believed "That they haven't played this line before. They analyzed, they prepared, and they probably knew the plans, but this is the first time they gave it on the board. It's a very complicated position – the way they played is a little bit out of control."[37]
+
+Down on the clock in a complicated middlegame, Ding quickly spotted 18...Nb2! with queenside play, putting pressure on both Gukesh's position and his clock. With Ding's pieces infiltrating his position, Gukesh faltered with 22.Qe1? and his position crumbled. Ding made a slight inaccuracy with 27...fxe6?! (correct was 27...Bxe6!), giving Gukesh an opportunity to salvage the game, but although Gukesh spotted the idea, he executed incorrectly. Ding made no further errors and converted his advantage to a win, his first in classical chess since he defeated Max Warmerdam in January during the Tata Steel Chess Tournament 2024.[37][54] This also marked the first time in 14 years that a win was registered in Game 1, after Veselin Topalov defeated Viswanathan Anand with the white pieces during the World Chess Championship 2010.[56] (The first Black win in game 1 since the 1969 world championship match)
+
+At the post-game press conference, Ding was elated with his performance, stating, "Well, of course I feel very good—I haven't won a single classical game for a long time and I managed to do that!" Gukesh on the other hand remarked, "It was just a tactical oversight by me. It can happen, it's a long match, and about my opponent's form, I think I expected nothing else. I expected the best version of him, and we have a long match ahead, so it's only more exciting now!"[54]
+
+French Defence, Steinitz Variation (ECO C11)
+1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5. f4 c5 6. Nce2 Nc6 7. c3 a5 8. Nf3 a4 9. Be3 Be7 10. g4 Qa5 11. Bg2 a3 12. b3 cxd4 13. b4 Qc7 14. Nexd4 Nb6 15. 0-0 Nc4 16. Bf2 Bd7 17. Qe2 Nxd4 18. Nxd4 Nb2 19. Qe3 Rc8 20. Rac1 Qc4 21. f5 Qd3 (diagram) 22. Qe1 Bg5 23. Rc2 Rc4 24. h4 Bf4 25. Qb1 Rxc3 26. Rxc3 Qxc3 27. fxe6 fxe6 28. Ne2 Qxe5 29. Nxf4 Qxf4 30. Qc2 Qc4 31. Qd2 0-0 32. Bd4 Nd3 33. Qe3 Rxf1+ 34. Bxf1 e5 35. Bxe5 Qxg4+ 36. Bg2 Bf5 37. Bg3 Be4 38. Kh2 h6 39. Bh3 Qd1 40. Bd6 Qc2+ 41. Kg3 Qxa2 42. Be6+ Kh8 0–1
+Game 2: Ding–Gukesh, ½–½
+Ding–Gukesh, game 2
+a	b	c	d	e	f	g	h	
+8	
+a8 black rookd8 black queene8 black kingh8 black rookb7 black pawnc7 black pawnf7 black pawng7 black pawna6 black pawnc6 black knightd6 black pawnf6 black knighth6 black pawna5 white pawnc5 black bishope5 black pawnc4 white pawne4 white pawnc3 white knighte3 white bishopf3 white knightb2 white pawnc2 white pawnf2 white pawng2 white pawnh2 white pawna1 white rookd1 white queenf1 white rookg1 white king
+8
+7	7
+6	6
+5	5
+4	4
+3	3
+2	2
+1	1
+a	b	c	d	e	f	g	h	
+Position after 10.dxc4. Gukesh is able to win material with 10...Bb4!? 11.Nd5 Nxe4, when 12.Qd3! Nc5 13.Qf5 Ne6 leads to complicated play. Gukesh also had the option to play 10...Bxe3, doubling and isolating White's pawns on the e-file, leading to a balanced but nuanced position. Ding's previous World Championship opponent, Ian Nepomniachtchi, expected the latter and was surprised Gukesh opted for 10...0-0.[57]
+The second game of the match, a 23-move draw, was played on 26 November. After Ding opted for the traditional Giuoco Pianissimo, commentator David Howell expressed surprise at the choice of 1.e4, noting that "He rarely employs the king's pawn openings until the last few months, when he has been experimenting a bit with it – he doesn't seem like a natural e4 player to me, but here we are!"[38] Ding chose a quiet line, but offered Gukesh complicated play with 10.dxc4, inviting 10...Bb4!?. Aware that he was facing preparation, Gukesh declined. In a balanced position, Ding had a slight opportunity to play on with 20.h4, creating less space for his opponent, but the position would have remained even. Ding instead chose to repeat moves, resulting in a draw.[57]
+
+At the post-game press conference, Gukesh stated, "This early, with Black, was nowhere close to a must-win. I was never going to do anything stupid." Ding made comments to the same effect, remarking that "I was feeling a little up and down. I was slightly worse in the middle game. I thought I had misplayed."[58]
+
+Italian Game, Giuoco Pianissimo (ECO C50)
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. d3 Nf6 5. Nc3 a6 6. a4 d6 7. 0-0 h6 8. Be3 Be6 9. a5 Bxc4 10. dxc4 (diagram) 0-0 11. Bxc5 dxc5 12. b3 Qxd1 13. Rfxd1 Rad8 14. Rdc1 Nd4 15. Ne1 Rd6 16. Kf1 g6 17. Rd1 Rfd8 18. f3 Kg7 19. Kf2 h5 20. Ne2 Nc6 21. Nc3 Nd4 22. Ne2 Nc6 23. Nc3 Nd4 ½–½
+Game 3: Gukesh–Ding, 1–0
+Gukesh–Ding, game 3
+a	b	c	d	e	f	g	h	
+8	
+a8 black rooke8 black kingf8 black bishoph8 black rooka7 black pawnb7 black pawnd7 black knightf7 black pawng7 black knightc6 black pawng6 black pawnd5 black pawng5 white pawnd4 white pawnb3 white pawnc3 white knightf3 white pawng3 white bishopb2 white pawnc2 black bishopd2 white knighte2 white pawna1 white rooke1 white kingf1 white bishopg1 white rook
+8
+7	7
+6	6
+5	5
+4	4
+3	3
+2	2
+1	1
+a	b	c	d	e	f	g	h	
+Position after 18.Bg3.
+The third game of the match, a 37-move win for Gukesh, was played on 27 November. Gukesh opted for a Queen's Gambit Declined with an early cxd5. In the opening, Ding intentionally got his bishop trapped with 10...Bc2. The game followed a previous game between Vladimir Kramnik and Arjun Erigaisi played in the World Rapid Team Championship 2023 until Ding's 13...Nbd7! After 14.Nd2 threatening to win Black's bishop with Rc1, Ding played 14...Rg8!, threatening ...g5 which counterattacks White's bishop and creates an escape for Black's. Gukesh responded by playing g5 himself, and both players believed the position to be good for White, but computer analysis suggests otherwise. Ding's 18...Rh5 was a mistake, leading to a sequence where Ding loses a bishop for two pawns; it was preferable to retreat the bishop immediately with 18...Bf5, or fight for the advantage with 18...Be7!. Gukesh re-trapped the bishop with 19.e4! and went on to precisely convert his advantage. Ding lost on time while executing his final move 37...Rh5, but his position was lost anyway (38.Bxf5! wins).[59]
+
+Queen's Gambit Declined, Exchange Variation (ECO D35)
+1. d4 Nf6 2. Nf3 d5 3. c4 e6 4. cxd5 exd5 5. Nc3 c6 6. Qc2 g6 7. h3 Bf5 8. Qb3 Qb6 9. g4 Qxb3 10. axb3 Bc2 11. Bf4 h5 12. Rg1 hxg4 13. hxg4 Nbd7 14. Nd2 Rg8 15. g5 Nh5 16. Bh2 Rh8 17. f3 Ng7 18. Bg3 (diagram) Rh5 19. e4 dxe4 20. fxe4 Ne6 21. Rc1 Nxd4 22. Bf2 Bg7 23. Ne2 Nxb3 24. Rxc2 Nxd2 25. Kxd2 Ne5 26. Nd4 Rd8 27. Ke2 Rh2 28. Bg2 a6 29. b3 Rd7 30. Rcc1 Ke7 31. Rcd1 Ke8 32. Bg3 Rh5 33. Nf3 Nxf3 34. Kxf3 Bd4 35. Rh1 Rxg5 36. Bh3 f5 37. Bf4 Rh5 1–0
+Game 4: Ding–Gukesh, ½–½
+Ding–Gukesh, game 4
+a	b	c	d	e	f	g	h	
+8	
+c8 black rookd8 black queenf8 black rookg8 black kinga7 black pawnf7 black pawng7 black pawnh7 black bishopb6 black pawnc6 black pawnf6 black knighth6 black pawna5 white pawnd5 black pawne5 black knightb4 white pawnd4 white knightb3 white queenc3 white knighte3 white pawnd2 white pawne2 white bishopf2 white pawng2 white pawnh2 white pawna1 white rookf1 white rookg1 white king
+8
+7	7
+6	6
+5	5
+4	4
+3	3
+2	2
+1	1
+a	b	c	d	e	f	g	h	
+Position after 15...b6. Ding should not play the natural-looking 16.f4, because 16...Nc4! gives Black a much better position (White can't win the seemingly free pawn because after 17.Bxc4 dxc4 18.Qxc4 c5 19.bxc5 bxc5 20.Nf3, Black has 20...Bd3 forking White's queen and rook). Computer analysis suggests White has minute winning chances after 16.Ba6 Rc7 17.f4 Ng6 (17...Nc4 no longer works because of 18.Bxc4 dxc4 19.Qxc4 c5 20.Ncb5! attacking the rook), but Ding went for the drawing move 16.Nf3.[51]
+The fourth game of the match, a 42-move draw, was played on 29 November. Ding played an unconventional system beginning with 1.Nf3, resembling a Queen's Indian Defense with colours reversed, which surprised Gukesh but was not particularly aggressive. At the post-game press conference, Ding revealed that he intended to "play it safe", but that he took some risk with 11.b4. Gukesh's 13...Ne5!? took Ding by surprise since the knight can be easily kicked out with f4, but Gukesh believed that, "[f4] looked like a move which would turn out to be risky in the long run". Gukesh's 15...b6 was Ding's last chance to push for a win with 16.Ba6, but after he played 16.Nf3, the game was headed for a draw. Pieces were traded and the two ended up in a queen-and-rook endgame where White has a four-on-three majority on the kingside, and Black has a passed pawn on the c-file. Despite the result being all-but-inevitable, Gukesh continued to play out the game and pose questions for Ding, notably with 30...f5!?. Shortly thereafter, however, the two made a draw by threefold repetition.[51]
+
+Zukertort Opening (ECO A06)
+1. Nf3 d5 2. e3 Nf6 3. b3 Bf5 4. Be2 h6 5. Ba3 Nbd7 6. 0-0 e6 7. Bxf8 Nxf8 8. c4 N8d7 9. Nc3 0-0 10. cxd5 exd5 11. b4 c6 12. Nd4 Bh7 13. Qb3 Ne5 14. a4 Rc8 15. a5 b6 (diagram) 16. Nf3 Nxf3+ 17. Bxf3 d4 18. Ne2 dxe3 19. dxe3 Be4 20. Rfd1 Qe7 21. Bxe4 Nxe4 22. axb6 axb6 23. Nc3 Rfd8 24. Nxe4 Qxe4 25. h3 c5 26. Rxd8+ Rxd8 27. bxc5 bxc5 28. Rc1 Qe5 29. Qc2 Rd5 30. g3 f5 31. Kg2 Kh7 32. Qc4 Qd6 33. e4 Re5 34. exf5 Rxf5 35. Qe4 Qd5 36. Qxd5 Rxd5 37. Kf3 Kg6 38. Ke4 Rd4+ 39. Ke3 Rd5 40. Ke4 Rd4+ 41. Ke3 Rd5 42. Ke4 Rd4+ ½–½
+Game 5: Gukesh–Ding
+French Defence, Exchange Variation (ECO C01)

@@ -1,0 +1,20 @@
+Chess
+Computer
+Algorithm
+Artificial Intelligence (AI)
+Heuristics
+Search
+Evaluation
+Engine
+GUI
+Chess Engine
+Supercomputer
+Elo
+Monte Carlo Tree Search (MCTS)
+Neural Networks
+Machine Learning
+Human-Computer Chess
+Advanced Chess
+Endgame Tablebases
+Alpha-Beta Pruning
+Chess Program

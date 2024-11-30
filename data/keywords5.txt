@@ -1,0 +1,20 @@
+Algorithm
+Minimax
+Alpha-beta pruning
+Chess engine
+Evaluation function
+Endgame tablebase
+Neural network
+Monte Carlo tree search
+Transposition table
+Bitboard
+Piece-square table
+Opening book
+Chess database
+Graphical user interface (GUI)
+Universal Chess Interface (UCI)
+Chess Engine Communication Protocol (CECP)
+Portable Game Notation (PGN)
+Forsyth-Edwards Notation (FEN)
+Hash table
+Parallel processing
