@@ -1,3 +1,32 @@
+import nltk
+#nltk.download('wordnet')
+#nltk.download('omw-1.4')  
+
+from nltk.corpus import wordnet
+
+
+def add_synonyms(words, max_synonyms=4):
+    """ Add synonyms for a list of words """
+    expanded_words = {}
+    
+    for word in words:
+        synonyms = set()
+        synsets = wordnet.synsets(word)
+
+        if synsets:
+            main_synset = synsets[0]
+            
+            for lemma in main_synset.lemmas():
+                synonyms.add(lemma.name().replace('_', ' '))
+                if len(synonyms) >= max_synonyms:
+                    break
+        
+        synonyms.add(word)
+        expanded_words[word] = list(synonyms)
+    
+    return expanded_words
+
+
 def expand_query(query, synonyms):
     """ Expand query with synonyms """
     expanded_query = []
@@ -41,33 +70,33 @@ def load_data(chunk_files, keyword_files):
     return data
 
 
+
 chunk_files = [f"data/chunk{i}.txt" for i in range(1, 6)]
 keyword_files = [f"data/keywords{i}.txt" for i in range(1, 6)]
 
-try:
-    data = load_data(chunk_files, keyword_files)
+data = load_data(chunk_files, keyword_files)
 
-    query = "Computer chess IC bearing the name of developer Frans Morsch (see Mephisto)"
-    query = [word.lower() for word in query.split()]
-    synonyms = {
-        "tournament": ["tournament", "event", "competition", "championship"],
-        "chess": ["chess", "game", "board game", "strategy game"],
-        "player": ["player", "competitor", "participant", "challenger"],
-        "stockfish": ["stockfish", "supercomputer", "neural networks", "machine learning"],
-        "ding": ["ding", "liren", "ding liren", "chess grandmasters"],
-    }
-    generic_words = ["chess", "game", "tournament", "player", "match", "against", "challenger", "championship"]
+query = "A naive implementation of the minimax algorithm can only search to a small depth in a practical amount of time, so various methods have been devised to greatly speed the search for good moves. Alpha–beta pruning, a system of defining upper and lower bounds on possible search results and searching until the bounds coincided, is typically used to reduce the search space of the program."
+query = [word.lower() for word in query.split()]
+query = add_synonyms(query)
 
-    query = expand_query(query, synonyms)
-    print(f"Expanded query: {query}")
-    results = search_chunks(query, data)
-    for result in results:
-        print(f"Chunk {result['index']+1} - Score: {result['score']}")
+# Manually add synonyms for query words 
+'''synonyms = {
+    "tournament": ["tournament", "event", "competition", "championship"],
+    "chess": ["chess", "game", "board game", "strategy game"],
+    "player": ["player", "competitor", "participant", "challenger"],
+    "stockfish": ["stockfish", "supercomputer", "neural networks", "machine learning"],
+    "ding": ["ding", "liren", "ding liren", "chess grandmasters"],
+}
+query = expand_query(query, synonyms)'''
 
-    print('\n')
-    results = re_rank(results, data, query, generic_words)
-    for result in results:
-        print(f"Chunk {result['index']+1} - Score: {result['score']}")
+print(f"Expanded query: {query}")
+results = search_chunks(query, data)
+for result in results:
+    print(f"Chunk {result['index']+1} - Score: {result['score']}")
 
-except Exception as e:
-    print(f"Error: {e}")
+generic_words = ["chess", "game", "tournament", "player", "match", "against", "challenger", "championship"]
+results = re_rank(results, data, query, generic_words)
+print("\nRe-ranked results:")
+for result in results:
+    print(f"Chunk {result['index']+1} - Score: {result['score']}")
