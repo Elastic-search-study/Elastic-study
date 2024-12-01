@@ -26,6 +26,17 @@ def add_synonyms(words, max_synonyms=4):
     
     return expanded_words
 
+def categorize(words, categories):
+    """ Categorize words based on keywords """
+    return [cat for cat, cat_words in categories.items()
+            if any(keyword in cat_words for keyword in words)]
+
+def categorize_chunks(data, categories):
+    """ Categorize chunks based on keywords """
+    for chunk in data:
+        chunk["category"] = categorize(chunk["keywords"], categories) 
+    return data
+
 
 def expand_query(query, synonyms):
     """ Expand query with synonyms """
@@ -35,13 +46,23 @@ def expand_query(query, synonyms):
     return expanded_query
 
 
-def search_chunks(query, data):
+def search_chunks(query, data, categories, weight_category=2):
     """ Search keyword chunks for query words """
     results = []
+    score = 0
+    category = categorize(query, categories)
+
     for i, doc in enumerate(data):
-        score = sum(1 for word in query if word in doc['keywords'])
+
+        if category is not None:
+            for cat in category:
+                score += (weight_category/len(category)) if cat in doc["category"] else 0
+
+        score += sum(1 for word in query if word in doc['keywords'])
+
         if score > 0:
             results.append({"index": i, "score": score})
+
     return sorted(results, key=lambda x: x['score'], reverse=True)
 
 
@@ -90,8 +111,13 @@ query = add_synonyms(query)
 }
 query = expand_query(query, synonyms)'''
 
-print(f"Expanded query: {query}")
-results = search_chunks(query, data)
+#print(f"Expanded query: {query}")
+
+categories = {"Competition": ["tournament", "chess", "champion", "player", "match", "game", "world chess championship"],
+            "Mathematics/Algorithms": ["machine learning", "algorithm", "minimax", "alpha-beta pruning"]}
+data = categorize_chunks(data, categories)
+
+results = search_chunks(query, data, categories, weight_category=0)
 for result in results:
     print(f"Chunk {result['index']+1} - Score: {result['score']}")
 
