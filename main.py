@@ -1,4 +1,15 @@
+def search_chunks(query, data):
+    """ Search keyword chunks for query words """
+    results = []
+    for i, doc in enumerate(data):
+        score = sum(1 for word in doc['keywords'] if word in query)
+        if score > 0:
+            results.append({"index": i, "chunk": doc['chunk'], "score": score})
+    return sorted(results, key=lambda x: x['score'], reverse=True)
+
+
 def load_data(chunk_files, keyword_files):
+    """ Load data from chunk and keyword files """
     data = []
     
     for chunk_path, keyword_path in zip(chunk_files, keyword_files):
@@ -22,3 +33,8 @@ try:
         print(f"Chunk: {entry['chunk']}\n\nKeywords: {entry['keywords']}\n")
 except Exception as e:
     print(f"Error: {e}")
+
+query = ["Ding Liren", "Chess"]
+results = search_chunks(query, data)
+for result in results:
+    print(f"Chunk {result['index']} - Score: {result['score']}")
