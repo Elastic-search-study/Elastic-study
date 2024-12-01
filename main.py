@@ -12,7 +12,7 @@ def search_chunks(query, data):
     for i, doc in enumerate(data):
         score = sum(1 for word in doc['keywords'] if word in query)
         if score > 0:
-            results.append({"index": i, "chunk": doc['chunk'], "score": score})
+            results.append({"index": i+1, "chunk": doc['chunk'], "score": score})
     return sorted(results, key=lambda x: x['score'], reverse=True)
 
 
@@ -23,7 +23,7 @@ def load_data(chunk_files, keyword_files):
         with open(chunk_path, 'r') as chunk_file:
             chunk_text = chunk_file.read().strip()
         with open(keyword_path, 'r') as keyword_file:
-            keywords = [line.strip() for line in keyword_file.readlines()]
+            keywords = [line.strip().lower() for line in keyword_file.readlines()]
         data.append({"chunk": chunk_text, "keywords": keywords})
     return data
 
@@ -33,20 +33,21 @@ keyword_files = [f"data/keywords{i}.txt" for i in range(1, 6)]
 
 try:
     data = load_data(chunk_files, keyword_files)
-    for entry in data:
-        print(f"Chunk: {entry['chunk']}\n\nKeywords: {entry['keywords']}\n")
+    # for entry in data:
+    #     print(f"Chunk: {entry['chunk']}\n\nKeywords: {entry['keywords']}\n")
 except Exception as e:
     print(f"Error: {e}")
 
-query = ["Ding Liren", "Chess"]
+query = "Ding against Stockfish"
+query = [word.lower() for word in query.split()]
 synonyms = {
-    "tournament": ["event", "competition"],
-    "chess": ["game", "board game"],
-    "player": ["competitor", "participant"],
-    "Program": ["Algorithm", "AI"],
-    "Grandmaster": ["Ding Liren", "GM"]
+    "tournament": ["tournament", "event", "competition", "championship"],
+    "chess": ["chess", "game", "board game", "strategy game"],
+    "player": ["player", "competitor", "participant", "challenger"],
+    "stockfish": ["stockfish", "supercomputer", "neural networks", "machine learning"],
+    "ding": ["ding", "liren", "ding liren", "chess grandmasters"],
 }
-query = expand_query(["tournament"], synonyms)
+query = expand_query(query, synonyms)
 print(f"Expanded query: {query}")
 results = search_chunks(query, data)
 for result in results:
