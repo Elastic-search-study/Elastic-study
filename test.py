@@ -58,3 +58,40 @@ def test_load_data():
     for doc in data:
         assert "chunk" in doc
         assert "keywords" in doc
+
+def test_expected_results():
+    data = load_data(chunk_files, keyword_files)
+    
+    expected_results = {
+        "chess": [1, 2, 3, 4, 5],
+        "tournament": [1, 2, 3, 4],
+        "algorithm": [4, 5],
+        "game": [2, 3, 4],
+        "strategy": [2, 4],
+        "rating": [1, 3, 4, 5],
+        "search techniques": [4, 5],
+        "endgame tablebase": [2, 4, 5],
+        "opening book": [1, 2, 3, 5],
+        "node": [4, 5],
+        "events": [1, 2, 3, 4],
+    }
+
+    failed_queries = []
+
+    for query_word, expected_chunks in expected_results.items():
+        query = [query_word]
+        query = add_synonyms(query)
+        results = search_chunks(query, data, categories={}, weight_category=0) # Ignore categories for this test
+        returned_chunks = [result["index"] + 1 for result in results if result["score"] > 0]
+        returned_chunks.sort()
+        
+        # Verify if expected chunks are in the returned chunks
+        if set(returned_chunks) != set(expected_chunks):
+            failed_queries.append({"query": query_word, "expected": expected_chunks, "returned": returned_chunks})
+    
+    if failed_queries:
+        for failure in failed_queries:
+            print(f"Query: {failure['query']} - Expected: {failure['expected']}, "f"Obtained: {failure['returned']}")
+    
+    assert not failed_queries
+
