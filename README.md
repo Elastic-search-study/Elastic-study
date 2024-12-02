@@ -15,27 +15,38 @@
 | **Node**            |     |     |     | X   | X   |
 | **Events**          | X   | X   | X   | X   |     |
 
+***
 
 Results with initial keywords:
-Chess - Expected: [1, 2, 3, 4, 5], Obtained: [1, 2, 3, 4, 5]
-Tournament - Expected: [1, 2, 3, 4], Obtained: [1, 2, 3]
-Algorithm - Expected: [4, 5], Obtained: [4, 5]
-Game - Expected: [2, 3, 4], Obtained: [2, 5]
-Strategy - Expected: [2, 4], Obtained: [2]
-Endgame Tablebase - Expected: [2, 4, 5], Obtained: [4, 5]
-Opening Book - Expected: [1, 2, 3, 5], Obtained: [2, 5]
-Node - Expected: [4, 5], Obtained: []
-Events - Expected: [1, 2, 3, 4], Obtained: []
+
+Prompt: I want to extract 20 key words from this wikipedia page extract : '''Page name : World Chess Championship 2024 + ‘’’chunk’’’
+
+1. Chess - Expected: \[1, 2, 3, 4, 5\], Obtained: \[1, 2, 3, 4, 5\]
+2. Tournament - Expected: \[1, 2, 3, 4\], Obtained: \[1, 2, 3\]
+3. Algorithm - Expected: \[4, 5\], Obtained: \[4, 5\]
+4. Game - Expected: \[2, 3, 4\], Obtained: \[2, 5\]
+5. Strategy - Expected: \[2, 4\], Obtained: \[2\]
+6. Rating - Expected: \[1, 3, 4, 5\], Obtained: \[1, 3, 4, 5\]
+7. Search Techniques - Expected: \[4, 5\] - Obtained: \[4, 5\],
+8. Endgame Tablebase - Expected: \[2, 4, 5\], Obtained: \[4, 5\]
+9. Opening Book - Expected: \[1, 2, 3, 5\], Obtained: \[2, 5\]
+10. Node - Expected: \[4, 5\], Obtained: \[\]
+11. Events - Expected: \[1, 2, 3, 4\], Obtained: \[\]
+
+***
 
 Results with modified keywords:
-Chess - Expected: [1, 2, 3, 4, 5], Obtained: [1, 2]
-Tournament - Expected: [1, 2, 3, 4], Obtained: [1, 3, 4]
-Algorithm - Expected: [4, 5], Obtained: [5]
-Game - Expected: [2, 3, 4], Obtained: [1, 2]
-Strategy - Expected: [2, 4], Obtained: [4]
-Rating - Expected: [1, 3, 4, 5], Obtained: [2, 3, 4]
-Search Techniques - EAlgorithm - Expected: [4, 5], Obtained: [5]xpected: [4, 5], Obtained: [4, 5]
-Endgame Tablebase - Expected: [2, 4, 5], Obtained: [2]
-Opening Book - Expected: [1, 2, 3, 5], Obtained: [2]
-Node - Expected: [4, 5], Obtained: [4, 5]
-Events - Expected: [1, 2, 3, 4], Obtained: [2, 3]
+
+Prompt: Extract the 30 most specific and relevant keywords from this text. Ensure all keywords are converted to their lemma forms (e.g., singular nouns, infinitive verbs): [chunk]
+
+1. Chess - Expected: \[1, 2, 3, 4, 5\], Obtained: \[1, 2\]
+2. Tournament - Expected: \[1, 2, 3, 4\], Obtained: \[1, 3, 4\]
+3. Algorithm - Expected: \[4, 5\], Obtained: \[5\]
+5. Game - Expected: \[2, 3, 4\], Obtained: \[1, 2\]
+6. Strategy - Expected: \[2, 4\], Obtained: \[4\]
+7. Rating - Expected: \[1, 3, 4, 5\], Obtained: \[2, 3, 4\]
+8. Search Techniques - Expected: \[4, 5\], Obtained: \[4, 5\]
+9. Endgame Tablebase - Expected: \[2, 4, 5\], Obtained: \[2\]
+10. Opening Book - Expected: \[1, 2, 3, 5\], Obtained: \[2\]
+11. Node - Expected: \[4, 5\], Obtained: \[4, 5\]
+12. Events - Expected: \[1, 2, 3, 4\], Obtained: \[2, 3\]
