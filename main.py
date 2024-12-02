@@ -5,32 +5,16 @@
 from nltk.corpus import wordnet
 
 
-def add_synonyms_auto(words, max_synonyms=3):
+def add_synonyms_auto(words):
     """ Add synonyms in a list of words """
     synonyms = set()
+
     for word in words:
-        synsets = wordnet.synsets(word)
-
-        if synsets:
-            main_synset = synsets[0]
-            for lemma in main_synset.lemmas():
+        for synset in wordnet.synsets(word):
+            for lemma in synset.lemmas():
                 synonyms.add(lemma.name().replace('_', ' '))
-                if len(synonyms) >= max_synonyms-1:
-                    break
     
-    words.extend(list(synonyms))
-    return list(set(words))
-
-def categorize(words, categories):
-    """ Categorize words based on keywords """
-    return [cat for cat, cat_words in categories.items()
-            if any(keyword in cat_words for keyword in words)]
-
-def categorize_chunks(data, categories):
-    """ Categorize chunks based on keywords """
-    for doc in data:
-        doc["category"] = categorize(doc["keywords"], categories) 
-    return data
+    return list(set(words + list(synonyms)))
 
 
 def add_synonyms_manual(query, synonyms):
@@ -40,6 +24,19 @@ def add_synonyms_manual(query, synonyms):
     for word in query:
         expanded_query.extend(synonyms.get(word, [word]))
     return expanded_query
+
+
+def categorize(words, categories):
+    """ Categorize words based on keywords """
+    return [cat for cat, cat_words in categories.items()
+            if any(keyword in cat_words for keyword in words)]
+
+
+def categorize_chunks(data, categories):
+    """ Categorize chunks based on keywords """
+    for doc in data:
+        doc["category"] = categorize(doc["keywords"], categories) 
+    return data
 
 
 def search_chunks(query, data, categories, weight_category=2):
@@ -82,7 +79,7 @@ def load_data(chunk_files, keyword_files):
             chunk_text = chunk_file.read().strip()
 
         with open(keyword_path, 'r') as keyword_file:
-            keywords = keyword_file.read().lower().strip().split()
+            keywords = list(set(keyword_file.read().lower().strip().split()))
 
         data.append({"chunk": chunk_text, "keywords": keywords})
 
@@ -99,7 +96,7 @@ if __name__ == "__main__":
 
     data = load_data(chunk_files, keyword_files)
 
-    query = "Events"
+    query = "Endgame Tablebase"
     query = [word for word in query.lower().split()]
     if expand_query_flag:
         query = add_synonyms_auto(query) # Automatically 

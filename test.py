@@ -14,10 +14,10 @@ def sample_data():
 
 def test_add_synonyms_auto():
     words = ["chess", "player"]
-    result = add_synonyms_auto(words, max_synonyms=3)
+    result = add_synonyms_auto(words)
     assert "chess" in result
-    assert len(result) <= 3
     assert "player" in result
+    assert "participant" in result
 
 def test_categorize():
     words = ["chess", "game", "algorithm"]
@@ -64,23 +64,23 @@ def test_expected_results():
     data = categorize_chunks(data, categories)
     
     expected_results = {
-        "chess": [1, 2, 3, 4, 5],
-        "tournament": [1, 2, 3, 4],
-        "algorithm": [4, 5],
-        "game": [2, 3, 4],
-        "strategy": [2, 4],
-        "rating": [1, 3, 4, 5],
-        "search techniques": [4, 5],
-        "endgame tablebase": [2, 4, 5],
-        "opening book": [1, 2, 3, 5],
-        "node": [4, 5],
-        "events": [1, 2, 3, 4],
+        "Chess": [1, 2, 3, 4, 5],
+        "Tournament": [1, 2, 3, 4],
+        "Algorithm": [4, 5],
+        "Game": [2, 3, 4],
+        "Strategy": [2, 4],
+        "Rating": [1, 3, 4, 5],
+        "Search Techniques": [4, 5],
+        "Endgame Tablebase": [2, 4, 5],
+        "Opening Book": [1, 2, 3, 5],
+        "Node": [4, 5],
+        "Events": [1, 2, 3, 4],
     }
 
     failed_queries = []
 
     for query_word, expected_chunks in expected_results.items():
-        query = [query_word]
+        query = [word for word in query_word.lower().split()]
         query = add_synonyms_auto(query)
 
         results = search_chunks(query, data, categories=categories, weight_category=0)
