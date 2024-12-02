@@ -1,5 +1,5 @@
 import pytest
-from main import add_synonyms, categorize, categorize_chunks, expand_query, search_chunks, re_rank, load_data
+from main import add_synonyms_auto, categorize, categorize_chunks, add_synonyms_manual, search_chunks, re_rank, load_data
 
 chunk_files = [f"data/chunk{i}.txt" for i in range(1, 6)]
 keyword_files = [f"data/keywords{i}.txt" for i in range(1, 6)]
@@ -12,11 +12,11 @@ def sample_data():
     """ Load sample chunks and keywords for testing """
     return load_data(chunk_files, keyword_files)
 
-def test_add_synonyms():
+def test_add_synonyms_auto():
     words = ["chess", "player"]
-    result = add_synonyms(words, max_synonyms=3)
+    result = add_synonyms_auto(words, max_synonyms=3)
     assert "chess" in result
-    assert len(result["chess"]) <= 3
+    assert len(result) <= 3
     assert "player" in result
 
 def test_categorize():
@@ -31,10 +31,10 @@ def test_categorize_chunks(sample_data):
         assert "category" in chunk
         assert isinstance(chunk["category"], list)
 
-def test_expand_query():
+def test_add_synonyms_manual():
     query = ["chess", "game"]
     synonyms = {"chess": ["chess", "board game"], "game": ["game", "match"]}
-    result = expand_query(query, synonyms)
+    result = add_synonyms_manual(query, synonyms)
     assert "board game" in result
     assert "match" in result
 
@@ -61,6 +61,7 @@ def test_load_data():
 
 def test_expected_results():
     data = load_data(chunk_files, keyword_files)
+    data = categorize_chunks(data, categories)
     
     expected_results = {
         "chess": [1, 2, 3, 4, 5],
@@ -80,12 +81,12 @@ def test_expected_results():
 
     for query_word, expected_chunks in expected_results.items():
         query = [query_word]
-        query = add_synonyms(query)
-        results = search_chunks(query, data, categories={}, weight_category=0) # Ignore categories for this test
-        returned_chunks = [result["index"] + 1 for result in results if result["score"] > 0]
+        query = add_synonyms_auto(query)
+
+        results = search_chunks(query, data, categories=categories, weight_category=0)
+        returned_chunks = [result["index"] + 1 for result in results]
         returned_chunks.sort()
         
-        # Verify if expected chunks are in the returned chunks
         if set(returned_chunks) != set(expected_chunks):
             failed_queries.append({"query": query_word, "expected": expected_chunks, "returned": returned_chunks})
     

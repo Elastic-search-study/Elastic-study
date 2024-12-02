@@ -1,29 +1,25 @@
-import nltk
-#nltk.download('wordnet')
-#nltk.download('omw-1.4')
+# import nltk
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
 
 from nltk.corpus import wordnet
 
 
-def add_synonyms(words, max_synonyms=4):
-    """ Add synonyms for a list of words """
-    expanded_words = {}
-
+def add_synonyms_auto(words, max_synonyms=3):
+    """ Add synonyms in a list of words """
+    synonyms = set()
     for word in words:
-        synonyms = set()
         synsets = wordnet.synsets(word)
 
         if synsets:
             main_synset = synsets[0]
             for lemma in main_synset.lemmas():
                 synonyms.add(lemma.name().replace('_', ' '))
-                if len(synonyms) >= max_synonyms:
+                if len(synonyms) >= max_synonyms-1:
                     break
-        
-        synonyms.add(word)
-        expanded_words[word] = list(synonyms)
     
-    return expanded_words
+    words.extend(list(synonyms))
+    return list(set(words))
 
 def categorize(words, categories):
     """ Categorize words based on keywords """
@@ -37,7 +33,7 @@ def categorize_chunks(data, categories):
     return data
 
 
-def expand_query(query, synonyms):
+def add_synonyms_manual(query, synonyms):
     """ Expand query with synonyms """
     expanded_query = []
 
@@ -49,13 +45,13 @@ def expand_query(query, synonyms):
 def search_chunks(query, data, categories, weight_category=2):
     """ Search keyword chunks for query words """
     results = []
-    score = 0
-    category = categorize(query, categories)
+    query_category = categorize(query, categories)
 
     for i, doc in enumerate(data):
-        if category:
-            for cat in category:
-                score += (weight_category / len(category)) if cat in doc["category"] else 0
+        score = 0
+        if query_category:
+            for cat in query_category:
+                score += (weight_category / len(query_category)) if cat in doc["category"] else 0
 
         score += sum(1 for word in query if word in doc['keywords'])
         if score > 0:
@@ -86,7 +82,7 @@ def load_data(chunk_files, keyword_files):
             chunk_text = chunk_file.read().strip()
 
         with open(keyword_path, 'r') as keyword_file:
-            keywords = [word.lower() for line in keyword_file.readlines() for word in line.strip().split()]
+            keywords = keyword_file.read().lower().strip().split()
 
         data.append({"chunk": chunk_text, "keywords": keywords})
 
@@ -94,6 +90,7 @@ def load_data(chunk_files, keyword_files):
 
 
 if __name__ == "__main__":
+
     chunk_files = [f"data/chunk{i}.txt" for i in range(1, 6)]
     keyword_files = [f"data/keywords{i}.txt" for i in range(1, 6)]
 
@@ -102,11 +99,10 @@ if __name__ == "__main__":
 
     data = load_data(chunk_files, keyword_files)
 
-    query = "chess"
-    query = [word.lower() for word in query.split()]
-
+    query = "Events"
+    query = [word for word in query.lower().split()]
     if expand_query_flag:
-        query = add_synonyms(query) # Automatically 
+        query = add_synonyms_auto(query) # Automatically 
 
         # Or manually add synonyms for query words 
         '''synonyms = {
@@ -115,24 +111,20 @@ if __name__ == "__main__":
             "player": ["player", "competitor", "participant", "challenger"],
             "stockfish": ["stockfish", "supercomputer", "neural networks", "machine learning"],
             "ding": ["ding", "liren", "ding liren", "chess grandmasters"]}
-        query = expand_query(query, synonyms)'''
+        query = add_synonyms_manual(query, synonyms)'''
 
     #print(f"Expanded query: {query}")
 
-    # Configure categories
     categories = {"Competition": ["tournament", "chess", "champion", "player", "match", "game", "world chess championship"],
                 "Mathematics/Algorithms": ["machine learning", "algorithm", "minimax", "alpha-beta pruning"]}
     data = categorize_chunks(data, categories)
 
-    # Search for chunks
-    results = search_chunks(query, data, categories, weight_category=0) # Use weight_category=0 to disable category search
+    results = search_chunks(query, data, categories, weight_category=0)
     print("Initial results:")
     for result in results:
         print(f"Chunk {result['index']+1} - Score: {result['score']}")
 
-    # Re-ranking results
     if re_rank_flag:
-        # Configure generic words
         generic_words = ["chess", "game", "tournament", "player", "match", "against", "challenger", "championship"]
         results = re_rank(results, data, query, generic_words)
 
