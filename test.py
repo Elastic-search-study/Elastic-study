@@ -2,7 +2,7 @@ import pytest
 from main import add_synonyms_auto, categorize, categorize_chunks, add_synonyms_manual, search_chunks, re_rank, load_data
 
 chunk_files = [f"data/chunk{i}.txt" for i in range(1, 6)]
-keyword_files = [f"data/keywords{i}.txt" for i in range(1, 6)]
+keyword_files = [f"data/keywords{i}.txt" for i in range(6, 11)] # Use different keyword files
 categories = {"Competition": ["tournament", "chess", "champion", "player", "match", "game", "world chess championship"],
             "Mathematics/Algorithms": ["machine learning", "algorithm", "minimax", "alpha-beta pruning"]}
 generic_words = ["chess", "game", "tournament", "player", "match", "against", "challenger", "championship"]
@@ -12,6 +12,7 @@ def sample_data():
     """ Load sample chunks and keywords for testing """
     return load_data(chunk_files, keyword_files)
 
+
 def test_add_synonyms_auto():
     words = ["chess", "player"]
     result = add_synonyms_auto(words)
@@ -19,11 +20,13 @@ def test_add_synonyms_auto():
     assert "player" in result
     assert "participant" in result
 
+
 def test_categorize():
     words = ["chess", "game", "algorithm"]
     result = categorize(words, categories)
     assert "Competition" in result
     assert "Mathematics/Algorithms" in result
+
 
 def test_categorize_chunks(sample_data):
     categorized_data = categorize_chunks(sample_data, categories)
@@ -31,12 +34,14 @@ def test_categorize_chunks(sample_data):
         assert "category" in chunk
         assert isinstance(chunk["category"], list)
 
+
 def test_add_synonyms_manual():
     query = ["chess", "game"]
     synonyms = {"chess": ["chess", "board game"], "game": ["game", "match"]}
     result = add_synonyms_manual(query, synonyms)
     assert "board game" in result
     assert "match" in result
+
 
 def test_search_chunks(sample_data):
     query = ["chess", "strategy"]
@@ -46,11 +51,13 @@ def test_search_chunks(sample_data):
     assert all("index" in r and "score" in r for r in result)
     assert result[0]["score"] >= result[-1]["score"]
 
+
 def test_re_rank(sample_data):
     query = ["chess", "algorithm"]
     results = [{"index": 0, "score": 3}, {"index": 1, "score": 1}]
     reranked = re_rank(results, sample_data, query, generic_words)
     assert reranked[0]["score"] >= reranked[-1]["score"]
+
 
 def test_load_data():
     data = load_data(chunk_files, keyword_files)
@@ -58,6 +65,7 @@ def test_load_data():
     for doc in data:
         assert "chunk" in doc
         assert "keywords" in doc
+
 
 def test_expected_results():
     data = load_data(chunk_files, keyword_files)
@@ -83,7 +91,7 @@ def test_expected_results():
         query = [word for word in query_word.lower().split()]
         query = add_synonyms_auto(query)
 
-        results = search_chunks(query, data, categories=categories, weight_category=0)
+        results = search_chunks(query, data, categories=categories, weight_category=0) # Ignore category
         returned_chunks = [result["index"] + 1 for result in results]
         returned_chunks.sort()
         
