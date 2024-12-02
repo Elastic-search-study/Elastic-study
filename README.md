@@ -17,7 +17,7 @@
 
 ***
 
-Results with initial keywords:
+## Results with initial keywords:
 
 Prompt: I want to extract 20 key words from this wikipedia page extract : '''Page name : World Chess Championship 2024 + ‘’’chunk’’’
 
@@ -33,9 +33,11 @@ Prompt: I want to extract 20 key words from this wikipedia page extract : '''Pag
 10. Node - Expected: \[4, 5\], Obtained: \[\]
 11. Events - Expected: \[1, 2, 3, 4\], Obtained: \[\]
 
+
 ***
 
-Results with modified keywords:
+
+## Results with modified keywords:
 
 Prompt: Extract the 30 most specific and relevant keywords from this text. Ensure all keywords are converted to their lemma forms (e.g., singular nouns, infinitive verbs): + ‘’’chunk’’’
 
@@ -52,6 +54,9 @@ Prompt: Extract the 30 most specific and relevant keywords from this text. Ensur
 11. Events - Expected: \[1, 2, 3, 4\], Obtained: \[2, 3\]
 
 
+***
+
+
 Prompt: Extract the 30 most relevant keywords from this text, you can include generic words from the topic (if they are relevant). Ensure all keywords are converted to their lemma forms (e.g., singular nouns, infinitive verbs): + ‘’’chunk’’’
 
 1. Chess - Expected: \[1, 2, 3, 4, 5\], Obtained: \[1, 2, 3, 4, 5\]
@@ -66,6 +71,8 @@ Prompt: Extract the 30 most relevant keywords from this text, you can include ge
 10. Node - Expected: \[4, 5\], Obtained: \[4, 5\]
 11. Events - Expected: \[1, 2, 3, 4\], Obtained: \[2, 3\]
 
+
+***
 
 Prompt: Extract the 20 keywords most relevant from this text, ignore proper names and dont use keywords with similar meaning, try to cover various topics from the text: + ‘’’chunk’’’
 
