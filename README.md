@@ -65,3 +65,18 @@ Prompt: Extract the 30 most relevant keywords from this text, you can include ge
 9. Opening Book - Expected: \[1, 2, 3, 5\], Obtained: \[2\]
 10. Node - Expected: \[4, 5\], Obtained: \[4, 5\]
 11. Events - Expected: \[1, 2, 3, 4\], Obtained: \[2, 3\]
+
+
+Prompt: Extract the 20 keywords most relevant from this text, ignore proper names and dont use keywords with similar meaning, try to cover various topics from the text: + ‘’’chunk’’’
+
+1. Chess - Expected:\[1, 2, 3, 4, 5\], Obtained:\[1\]
+2. Tournament - Expected:\[1, 2, 3, 4\], Obtained:\[1\]
+3. Algorithm - Expected:\[4, 5\], Obtained:\[\]
+4. Game - Expected:\[2, 3, 4\], Obtained:\[\]
+5. Strategy - Expected:\[2, 4\], Obtained:\[\]
+6. Rating - Expected:\[1, 3, 4, 5\], Obtained:\[1\]
+7. Search Techniques - Expected:\[4, 5\], Obtained:\[\]
+8. Endgame Tablebase - Expected:\[2, 4, 5\], Obtained:\[2\]
+9. Opening Book - Expected:\[1, 2, 3, 5\], Obtained:\[\]
+10. Node - Expected:\[4, 5\], Obtained:\[\]
+11. Events - Expected:\[1, 2, 3, 4\], Obtained:\[3\]

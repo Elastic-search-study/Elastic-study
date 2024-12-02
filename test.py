@@ -1,5 +1,5 @@
 import pytest
-from main import add_synonyms_auto, categorize, categorize_chunks, add_synonyms_manual, search_chunks, re_rank, load_data
+from chunk_retrieval import add_synonyms_auto, categorize, categorize_chunks, add_synonyms_manual, search_chunks, re_rank, load_data
 
 chunk_files = [f"data/chunk{i}.txt" for i in range(1, 6)]
 keyword_files = [f"data/keywords{i}.txt" for i in range(6, 11)] # Use different keyword files
