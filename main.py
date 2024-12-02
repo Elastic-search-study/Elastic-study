@@ -1,6 +1,6 @@
 import nltk
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+#nltk.download('wordnet')
+#nltk.download('omw-1.4')
 
 from nltk.corpus import wordnet
 
@@ -86,7 +86,7 @@ def load_data(chunk_files, keyword_files):
             chunk_text = chunk_file.read().strip()
 
         with open(keyword_path, 'r') as keyword_file:
-            keywords = [line.strip().lower() for line in keyword_file.readlines()]
+            keywords = [word.lower() for line in keyword_file.readlines() for word in line.strip().split()]
 
         data.append({"chunk": chunk_text, "keywords": keywords})
 
@@ -97,34 +97,45 @@ if __name__ == "__main__":
     chunk_files = [f"data/chunk{i}.txt" for i in range(1, 6)]
     keyword_files = [f"data/keywords{i}.txt" for i in range(1, 6)]
 
+    expand_query_flag = True  # Choose whether to expand the query with synonyms
+    re_rank_flag = True  # Choose whether to re-rank the results, reducing score for generic words
+
     data = load_data(chunk_files, keyword_files)
 
-    query = "A naive implementation of the minimax algorithm can only search to a small depth in a practical amount of time, so various methods have been devised to greatly speed the search for good moves. Alpha–beta pruning, a system of defining upper and lower bounds on possible search results and searching until the bounds coincided, is typically used to reduce the search space of the program."
+    query = "chess"
     query = [word.lower() for word in query.split()]
-    query = add_synonyms(query)
 
-    # Manually add synonyms for query words 
-    '''synonyms = {
-        "tournament": ["tournament", "event", "competition", "championship"],
-        "chess": ["chess", "game", "board game", "strategy game"],
-        "player": ["player", "competitor", "participant", "challenger"],
-        "stockfish": ["stockfish", "supercomputer", "neural networks", "machine learning"],
-        "ding": ["ding", "liren", "ding liren", "chess grandmasters"],
-    }
-    query = expand_query(query, synonyms)'''
+    if expand_query_flag:
+        query = add_synonyms(query) # Automatically 
+
+        # Or manually add synonyms for query words 
+        '''synonyms = {
+            "tournament": ["tournament", "event", "competition", "championship"],
+            "chess": ["chess", "game", "board game", "strategy game"],
+            "player": ["player", "competitor", "participant", "challenger"],
+            "stockfish": ["stockfish", "supercomputer", "neural networks", "machine learning"],
+            "ding": ["ding", "liren", "ding liren", "chess grandmasters"]}
+        query = expand_query(query, synonyms)'''
 
     #print(f"Expanded query: {query}")
 
+    # Configure categories
     categories = {"Competition": ["tournament", "chess", "champion", "player", "match", "game", "world chess championship"],
                 "Mathematics/Algorithms": ["machine learning", "algorithm", "minimax", "alpha-beta pruning"]}
     data = categorize_chunks(data, categories)
 
-    results = search_chunks(query, data, categories, weight_category=0)
+    # Search for chunks
+    results = search_chunks(query, data, categories, weight_category=0) # Use weight_category=0 to disable category search
+    print("Initial results:")
     for result in results:
         print(f"Chunk {result['index']+1} - Score: {result['score']}")
 
-    generic_words = ["chess", "game", "tournament", "player", "match", "against", "challenger", "championship"]
-    results = re_rank(results, data, query, generic_words)
-    print("\nRe-ranked results:")
-    for result in results:
-        print(f"Chunk {result['index']+1} - Score: {result['score']}")
+    # Re-ranking results
+    if re_rank_flag:
+        # Configure generic words
+        generic_words = ["chess", "game", "tournament", "player", "match", "against", "challenger", "championship"]
+        results = re_rank(results, data, query, generic_words)
+
+        print("\nRe-ranked results:")
+        for result in results:
+            print(f"Chunk {result['index']+1} - Score: {result['score']}")
